@@ -1,5 +1,7 @@
 package com.andreribeiro.rest.facade;
 
+import com.andreribeiro.calculator.listener.model.RequestDto;
+
 public interface MessageSenderFacade{
-    void sendMessage(String message);
+    public Object sendMessageAndReceive(RequestDto request);
 }
