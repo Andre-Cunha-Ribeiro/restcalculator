@@ -3,8 +3,8 @@ package com.andreribeiro.rest.controller;
 import java.math.BigDecimal;
 import java.util.Collections;
 
-import com.andreribeiro.calculator.listener.model.Operation;
-import com.andreribeiro.calculator.listener.model.RequestDto;
+import com.andreribeiro.rest.model.Operation;
+import com.andreribeiro.rest.model.RequestDto;
 import com.andreribeiro.rest.service.RestService;
 
 import org.springframework.beans.factory.annotation.Autowired;

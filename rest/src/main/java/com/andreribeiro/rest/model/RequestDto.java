@@ -1,4 +1,4 @@
-package com.andreribeiro.calculator.listener.model;
+package com.andreribeiro.rest.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

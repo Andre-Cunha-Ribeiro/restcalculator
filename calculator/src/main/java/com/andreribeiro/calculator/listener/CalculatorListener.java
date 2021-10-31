@@ -2,7 +2,7 @@ package com.andreribeiro.calculator.listener;
 
 import java.math.BigDecimal;
 
-import com.andreribeiro.calculator.listener.model.RequestDto;
+import com.andreribeiro.rest.model.RequestDto;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
@@ -13,7 +13,7 @@ public class CalculatorListener {
 
     @RabbitListener(queues = "tut.rpc.requests")
     public BigDecimal consumeNewOperation(final RequestDto operation) {
-        // log.info("Consumed new operation: " + operation);
+        //log.info("Consumed new operation: " + operation);
         return performRequestCalculation(operation);
     }
 

@@ -1,13 +1,13 @@
-package com.andreribeiro.rest;
+// package com.andreribeiro.rest;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class RestApplicationTests {
+// @SpringBootTest
+// class RestApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+// 	// @Test
+// 	// void contextLoads() {
+// 	// }
 
-}
+// }

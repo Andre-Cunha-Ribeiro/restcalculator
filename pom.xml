@@ -19,8 +19,8 @@
 	</properties>
 	
 	<modules> 
-		<module>calculator</module>
 		<module>rest</module>
+		<module>calculator</module>
 	</modules>
 
 </project>
