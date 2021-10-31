@@ -1,4 +1,4 @@
-package com.andreribeiro.rest.facade.implementation;
+package com.andreribeiro.rest.config;
 
 import java.io.IOException;
 import java.util.UUID;

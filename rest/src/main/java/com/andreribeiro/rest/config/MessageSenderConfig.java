@@ -1,4 +1,4 @@
-package com.andreribeiro.rest.facade.implementation;
+package com.andreribeiro.rest.config;
 
 import java.io.IOException;
 
@@ -14,6 +14,7 @@ import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +25,14 @@ import ch.qos.logback.access.tomcat.LogbackValve;
 
 @Configuration
 public class MessageSenderConfig{
-    protected final String helloWorldQueueName = "tut.rpc.requests";
+    @Value("${queue.name}")
+    public String queueName;
+
+    @Value("${exchange.name}")
+    public String exchangeName;
+
+    @Value("${routing.name}")
+    public String routingName;
 
     @Bean
     public ConnectionFactory connectionFactory() {
@@ -41,7 +49,7 @@ public class MessageSenderConfig{
 
     @Bean
     public DirectExchange exchange() {
-        return new DirectExchange("tut.rpc");
+        return new DirectExchange(exchangeName);
     }
 
     @Bean
@@ -50,9 +58,8 @@ public class MessageSenderConfig{
     }
 
     @Bean
-    // Every queue is bound to the default direct exchange
-    public Queue helloWorldQueue() {
-        return new Queue(this.helloWorldQueueName);
+    public Queue queue() {
+        return new Queue(queueName);
     }
 
     @Bean

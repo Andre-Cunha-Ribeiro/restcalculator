@@ -14,8 +14,7 @@ public class CalculatorListener {
 
     private static final Logger logger = LoggerFactory.getLogger(CalculatorListener.class);
 
-
-    @RabbitListener(queues = "tut.rpc.requests")
+    @RabbitListener(queues = "calc.name.queue")
     public BigDecimal consumeNewOperation(final RequestDto operation) {
         logger.info("Performing Calculation: " + operation);
         return performRequestCalculation(operation);

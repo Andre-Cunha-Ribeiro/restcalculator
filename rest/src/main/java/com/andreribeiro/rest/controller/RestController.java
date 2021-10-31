@@ -3,9 +3,9 @@ package com.andreribeiro.rest.controller;
 import java.math.BigDecimal;
 import java.util.Collections;
 
-import com.andreribeiro.rest.facade.implementation.AspectConfig;
 import com.andreribeiro.calculator.listener.model.Operation;
 import com.andreribeiro.calculator.listener.model.RequestDto;
+import com.andreribeiro.rest.config.AspectConfig;
 import com.andreribeiro.rest.service.RestService;
 import com.rabbitmq.client.RpcClient.Response;
 
@@ -40,10 +40,10 @@ public class RestController {
 
         logger.info("Calculation completed, response=" + response);
         
-        // HttpHeaders headers = new HttpHeaders();
-        // headers.add("id", AspectConfig.get);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("id", MDC.get(AspectConfig.REF_ID));
 
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(Collections.singletonMap("result", response));
+        return ResponseEntity.status(HttpStatus.ACCEPTED).headers(headers).body(Collections.singletonMap("result", response));
     }
 
     @GetMapping(path = "/sum")
