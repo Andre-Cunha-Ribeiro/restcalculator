@@ -39,5 +39,13 @@ public class RequestDto implements Serializable{
         this.secondNumber = secondNumber;
     }
 
+    @Override
+    public String toString() {
+        return "RequestDto [firstNumber=" + firstNumber + ", operation=" + operation + ", secondNumber=" + secondNumber
+                + "]";
+    }
+
+    
+
     
 }

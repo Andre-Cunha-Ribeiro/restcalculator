@@ -1,12 +1,8 @@
 package com.andreribeiro.rest.config;
 
-import java.io.IOException;
+import java.util.UUID;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import org.slf4j.MDC;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
@@ -18,13 +14,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.filter.OncePerRequestFilter;
 
 import ch.qos.logback.access.tomcat.LogbackValve;
 
-
 @Configuration
 public class MessageSenderConfig{
+
     @Value("${queue.name}")
     public String queueName;
 
@@ -67,6 +62,12 @@ public class MessageSenderConfig{
         TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
         tomcat.addContextValves(new LogbackValve());
         return tomcat;
+    }
+
+    public static String generateUUID(){
+        String id = UUID.randomUUID().toString().replace("-", "").substring(0, 12);
+        MDC.put(AspectConfig.REF_ID, id);
+        return id;
     }
 
 }

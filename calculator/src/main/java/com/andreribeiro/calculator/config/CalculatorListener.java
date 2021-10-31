@@ -1,4 +1,4 @@
-package com.andreribeiro.calculator.listener;
+package com.andreribeiro.calculator.config;
 
 import java.math.BigDecimal;
 
@@ -16,25 +16,30 @@ public class CalculatorListener {
 
     @RabbitListener(queues = "calc.name.queue")
     public BigDecimal consumeNewOperation(final RequestDto operation) {
-        logger.info("Performing Calculation: " + operation);
+        logger.info("Performing Calculation: {}", operation);
         return performRequestCalculation(operation);
     }
 
     private BigDecimal performRequestCalculation(RequestDto operation) {
-
+        BigDecimal result;
         switch (operation.getOperation()) {
         case SUM:
-            return operation.getFirstNumber().add(operation.getSecondNumber());
+            result = operation.getFirstNumber().add(operation.getSecondNumber());
+            break;
         case SUB:
-            return operation.getFirstNumber().subtract(operation.getSecondNumber());
+            result = operation.getFirstNumber().subtract(operation.getSecondNumber());
+            break;
         case DIV:
-            return operation.getFirstNumber().divide(operation.getSecondNumber());
+            result = operation.getFirstNumber().divide(operation.getSecondNumber());
+            break;
         case MUL:
-            return operation.getFirstNumber().multiply(operation.getSecondNumber());
+            result = operation.getFirstNumber().multiply(operation.getSecondNumber());
+            break;
         default:
-        return null;
+            return null;
         }
-        //logger.info("Return Calculation: " + operation);
-     }
+        logger.info("Calculation Result: {}", result);
+        return result;
+    }
 
 }
