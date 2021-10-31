@@ -35,8 +35,8 @@ public class RestController {
     public ResponseEntity<Object> produceNewOperation(RequestDto request){
         //log.info("Produced new operation: " + op);
         logger.info("Calculation received");
-        //BigDecimal response = (BigDecimal) service.sendMessageAndReceive(request);
-        String response = (String)service.sendMessageAndReceive("request");
+        BigDecimal response = (BigDecimal) service.sendMessageAndReceive(request);
+        //BigDecimal response = (String)service.sendMessageAndReceive(request);
 
         logger.info("Calculation completed, response=" + response);
         
