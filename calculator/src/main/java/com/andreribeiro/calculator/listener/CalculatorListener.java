@@ -2,12 +2,12 @@ package com.andreribeiro.calculator.listener;
 
 import java.math.BigDecimal;
 
-import com.andreribeiro.rest.model.RequestDto;
+import com.andreribeiro.calculator.listener.model.RequestDto;
 
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.stereotype.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Component;
 
 @Component
 public class CalculatorListener {

@@ -2,7 +2,7 @@ package com.andreribeiro.rest.service.implementation;
 
 import com.andreribeiro.rest.facade.MessageSenderFacade;
 import com.andreribeiro.rest.facade.implementation.MessageSenderFacadeImp;
-import com.andreribeiro.rest.model.RequestDto;
+import com.andreribeiro.calculator.listener.model.RequestDto;
 import com.andreribeiro.rest.service.RestService;
 
 import org.springframework.beans.factory.annotation.Autowired;

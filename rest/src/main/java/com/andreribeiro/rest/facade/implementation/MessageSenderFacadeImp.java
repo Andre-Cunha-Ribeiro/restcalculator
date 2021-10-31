@@ -1,8 +1,7 @@
 package com.andreribeiro.rest.facade.implementation;
 
 import com.andreribeiro.rest.facade.MessageSenderFacade;
-import com.andreribeiro.rest.model.RequestDto;
-
+import com.andreribeiro.calculator.listener.model.RequestDto;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
