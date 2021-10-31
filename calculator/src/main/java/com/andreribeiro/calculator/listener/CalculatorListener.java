@@ -2,18 +2,21 @@ package com.andreribeiro.calculator.listener;
 
 import java.math.BigDecimal;
 
-import com.andreribeiro.rest.model.RequestDto;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Component
 public class CalculatorListener {
 
+    private static final Logger logger = LoggerFactory.getLogger(CalculatorListener.class);
+
 
     @RabbitListener(queues = "tut.rpc.requests")
     public String consumeNewOperation(final String operation) {
-        //log.info("Consumed new operation: " + operation);
+        logger.info("Performing Calculation: " + operation);
         return performRequestCalculation(operation);
     }
 
@@ -30,7 +33,7 @@ public class CalculatorListener {
         // default:
         //     return null;
         // }
-
+        logger.info("Return Calculation: " + operation);
         return operation;
      }
 
