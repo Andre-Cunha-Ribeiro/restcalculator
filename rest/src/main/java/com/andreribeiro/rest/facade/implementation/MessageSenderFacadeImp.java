@@ -18,7 +18,7 @@ public class MessageSenderFacadeImp implements MessageSenderFacade{
     private DirectExchange exchange;
 
     @Override
-    public Object sendMessageAndReceive(RequestDto request){
+    public Object sendMessageAndReceive(String request){
         return rabbitTemplate.convertSendAndReceive(exchange.getName(), "rpc", request);
     }
 

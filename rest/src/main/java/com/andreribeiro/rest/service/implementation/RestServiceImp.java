@@ -19,7 +19,7 @@ public class RestServiceImp implements RestService{
     }
 
     @Override
-    public Object sendMessageAndReceive(RequestDto request) {
+    public Object sendMessageAndReceive(String request) {
         return messageSender.sendMessageAndReceive(request);
         
     }

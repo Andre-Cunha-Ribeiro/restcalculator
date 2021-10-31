@@ -7,8 +7,11 @@ import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import ch.qos.logback.access.tomcat.LogbackValve;
 
 
 @Configuration
@@ -42,6 +45,14 @@ public class MessageSenderConfig {
     // Every queue is bound to the default direct exchange
     public Queue helloWorldQueue() {
         return new Queue(this.helloWorldQueueName);
+    }
+
+    @Bean
+    public TomcatServletWebServerFactory servletContainer() {
+        TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
+        tomcat.addContextValves(new LogbackValve());
+
+        return tomcat;
     }
 
 

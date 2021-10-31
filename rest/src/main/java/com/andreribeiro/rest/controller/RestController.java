@@ -30,7 +30,9 @@ public class RestController {
     public ResponseEntity<Object> produceNewOperation(RequestDto request){
         //log.info("Produced new operation: " + op);
     
-        BigDecimal response = (BigDecimal) service.sendMessageAndReceive(request);
+        //BigDecimal response = (BigDecimal) service.sendMessageAndReceive(request);
+        String response = (String)service.sendMessageAndReceive("request");
+
     
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(Collections.singletonMap("result", response));
     }
