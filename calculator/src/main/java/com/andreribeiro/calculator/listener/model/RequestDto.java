@@ -41,8 +41,7 @@ public class RequestDto implements Serializable{
 
     @Override
     public String toString() {
-        return "RequestDto [firstNumber=" + firstNumber + ", operation=" + operation + ", secondNumber=" + secondNumber
-                + "]";
+        return "RequestDto [ " + firstNumber + " " + operation + " " + secondNumber + " ]";
     }
 
     
