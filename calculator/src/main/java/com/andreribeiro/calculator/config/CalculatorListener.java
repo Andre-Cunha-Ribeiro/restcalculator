@@ -1,6 +1,7 @@
 package com.andreribeiro.calculator.config;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import com.andreribeiro.calculator.listener.model.RequestDto;
 
@@ -30,7 +31,7 @@ public class CalculatorListener {
             result = operation.getFirstNumber().subtract(operation.getSecondNumber());
             break;
         case DIV:
-            result = operation.getFirstNumber().divide(operation.getSecondNumber());
+            result = operation.getFirstNumber().divide(operation.getSecondNumber(), 4, RoundingMode.HALF_UP);
             break;
         case MUL:
             result = operation.getFirstNumber().multiply(operation.getSecondNumber());

@@ -14,11 +14,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
 
 import ch.qos.logback.access.tomcat.LogbackValve;
 
 @Configuration
-public class MessageSenderConfig{
+public class MessageSenderConfig {
 
     @Value("${queue.name}")
     public String queueName;
@@ -64,11 +65,16 @@ public class MessageSenderConfig{
         return tomcat;
     }
 
-    public static String generateUUID(){
+    public static String generateUUID() {
         String id = UUID.randomUUID().toString().replace("-", "").substring(0, 12);
         MDC.put(AspectConfig.REF_ID, id);
         return id;
     }
 
-}
+    public static HttpHeaders addResponseHeader(String id) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("id", id);
+        return headers;
+    }
 
+}
